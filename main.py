@@ -1,28 +1,45 @@
 import pygame
+import sys
 
-a, b = (int(i) for i in input().split())
-size = width, height = (a, a)
-screen = pygame.display.set_mode(size)
-pygame.init()
-pygame.display.set_caption('Шахматная клетка')
-screen.fill((0, 0, 0))
-n = a // b
-y = a
-num = 1
-while y > 0:
-    if num % 2 == 0:
-        x = 0
-    else:
-        x = n
-    while x <= a:
-        screen.fill(pygame.Color('white'), (x, y - n, n, n))
-        x = x + 2 * n
-    y = y - n
-    num = num + 1
+def main():
+    pygame.init()
+    pygame.display.set_caption('Шахматная клетка')
+    try:
+        size = (int(i) for i in input().split())
+    except ValueError:
+        print('Неправильная форма ввода')
+        return -1
+    a, b = size
+    screen = pygame.display.set_mode(a, a)
+    draw(screen)
+    while pygame.event.wait().type != pygame.QUIT:
+        pygame.display.flip()
+    pygame.quit()
 
 
-while pygame.event.wait().type != pygame.QUIT:
-    pygame.display.flip()
+def draw(screen):
+    screen.fill((0, 0, 0))
+    a, b = screen.get_size()
+    n = a // b
+    y = a
+    num = 1
+    while y > 0:
+        if num % 2 == 0:
+            x = 0
+        else:
+            x = n
+        while x <= a:
+            screen.fill(pygame.Color('white'), (x, y - n, n, n))
+            x = x + 2 * n
+        y = y - n
+        num = num + 1
 
-pygame.quit()
-print('Proba')
+
+if __name__ == '__main__':
+    sys.exit(main())
+
+
+
+
+
+
