@@ -3,7 +3,7 @@ import sys
 
 def main():
     pygame.init()
-    pygame.display.set_caption('Шахматная клетка')
+    pygame.display.set_caption('Шахматная клеткаddd')
     try:
         size = (int(i) for i in input().split())
     except ValueError:
