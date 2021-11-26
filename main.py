@@ -6,6 +6,10 @@ def main():
     pygame.display.set_caption('Шахматная клетка')
     try:
         a, b = (int(i) for i in input().split())
+        if a % b != 0:
+            print('a % b != 0')
+            return
+
     except ValueError:
         print('Неправильная форма ввода')
         return -1
