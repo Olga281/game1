@@ -26,7 +26,7 @@ def draw(screen, w, n):
     color = ['red', 'green', 'blue']
     count = n
     while count > 0:
-        pygame.draw.circle(screen, color[count % 3], (r, r), width)
+        pygame.draw.circle(screen, color[(n + count) % 3], (r, r), width)
         width -= w
         count -= 1
 
