@@ -3,23 +3,22 @@ import sys
 
 def main():
     pygame.init()
-    pygame.display.set_caption('Шахматная клеткаddd')
+    pygame.display.set_caption('Шахматная клетка')
     try:
-        size = (int(i) for i in input().split())
+        a, b = (int(i) for i in input().split())
     except ValueError:
         print('Неправильная форма ввода')
         return -1
-    a, b = size
-    screen = pygame.display.set_mode(a, a)
-    draw(screen)
+    size = a, a
+    screen = pygame.display.set_mode(size)
+    draw(screen, a, b)
     while pygame.event.wait().type != pygame.QUIT:
         pygame.display.flip()
     pygame.quit()
 
 
-def draw(screen):
+def draw(screen, a, b):
     screen.fill((0, 0, 0))
-    a, b = screen.get_size()
     n = a // b
     y = a
     num = 1
